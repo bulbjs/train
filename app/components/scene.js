@@ -68,4 +68,4 @@ class Scenes extends Component {
 }
 
 module.exports = Scenes;
-//export default Scenes;
+//export default  Scenes;

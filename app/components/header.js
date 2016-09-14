@@ -39,7 +39,7 @@ class Header extends Component {
 
   render(): ReactElement {
     return (
-      <NavigationHeader ref= "knb"
+      <NavigationHeader
         {...this.props}
         style={styles.header}
         renderTitleComponent={this._renderTitleComponent}
@@ -68,34 +68,9 @@ class Header extends Component {
       </NavigationHeader.Title>
     );
   }
-
-  
 }
 
 const styles = StyleSheet.create({
-  navigator: {
-    flex: 1,
-  },
-  navigatorCardStack: {
-    flex: 20
-  },
-  tabs: {
-    flex: 1,
-    flexDirection: 'row',
-  },
-  tab: {
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    flex: 1,
-    justifyContent: 'center',
-  },
-  tabText: {
-    color: '#222',
-    fontWeight: '500',
-  },
-  tabSelected: {
-    color: 'blue',
-  },
   header:{
     backgroundColor:'#1a9bf1',
   }

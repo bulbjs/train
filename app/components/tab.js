@@ -49,12 +49,6 @@ class Tab extends Component {
 }
 
 const styles = StyleSheet.create({
-  navigator: {
-    flex: 1,
-  },
-  navigatorCardStack: {
-    flex: 20
-  },
   tabs: {
     flex: 1,
     flexDirection: 'row',
@@ -71,9 +65,6 @@ const styles = StyleSheet.create({
   },
   tabSelected: {
     color: 'blue',
-  },
-  header:{
-    backgroundColor:'#1a9bf1',
   }
 });
 
