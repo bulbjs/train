@@ -9,7 +9,7 @@ import {
   AppRegistry
 } from 'react-native';
 
-import Root from './app/root';
+import Root from './app';
 
 class train extends Component {
   render() {

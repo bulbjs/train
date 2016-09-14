@@ -1,7 +1,10 @@
 # train
 react native 火车票查询
 
+# react-native
 
+* 版本 0.33.0
+* 文档 https://facebook.github.io/react-native/docs/navigation.html
 
 # 更改个人项目用户
 
