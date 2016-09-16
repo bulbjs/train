@@ -32,15 +32,15 @@ const Scene = appNavigationContainer(require('./scene'));
 // Define your own tabs.
 const Tabs = appNavigationContainer(require('./tabs'));
 
-
+const TabBar = appNavigationContainer(require('./tabBar'));
 
 class Navigator extends Component {
   static propTypes = {
     appNavigationState: PropTypes.shape({
-      apple: NavigationPropTypes.navigationState.isRequired,
-      banana: NavigationPropTypes.navigationState.isRequired,
-      orange: NavigationPropTypes.navigationState.isRequired,
-      tabs: NavigationPropTypes.navigationState.isRequired,
+      bar1: NavigationPropTypes.navigationState.isRequired,
+      bar2: NavigationPropTypes.navigationState.isRequired,
+      bar3: NavigationPropTypes.navigationState.isRequired,
+      bar4: NavigationPropTypes.navigationState.isRequired,
     }),
     navigate: PropTypes.func.isRequired,
   };
@@ -70,9 +70,6 @@ class Navigator extends Component {
           renderScene={this._renderScene}
           style={styles.navigatorCardStack}
         />
-        <Tabs
-          navigationState={tabs}
-        />
       </View>
     );
   }
@@ -80,7 +77,7 @@ class Navigator extends Component {
   // Render the header.
   // The detailed spec of `sceneProps` is defined at `NavigationTypeDefinition`
   // as type `NavigationSceneRendererProps`.
-  _renderHeader(sceneProps: Object): ReactElement {
+  _renderHeader(sceneProps) {
     return (
       <Header
         {...sceneProps}
@@ -91,12 +88,13 @@ class Navigator extends Component {
   // Render a scene for route.
   // The detailed spec of `sceneProps` is defined at `NavigationTypeDefinition`
   // as type `NavigationSceneRendererProps`.
-  _renderScene(sceneProps: Object): ReactElement {
-    return (
+  _renderScene(sceneProps) {
+    return <TabBar {...sceneProps}/>
+    /*return (
       <Scene
         {...sceneProps}
       />
-    );
+    );*/
   }
 
   _back() {
@@ -110,7 +108,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   navigatorCardStack: {
-    flex: 20
+    backgroundColor: '#f00',
   }
 });
 module.exports = appNavigationContainer(Navigator);

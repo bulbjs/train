@@ -37,7 +37,7 @@ class Header extends Component {
     
   }
 
-  render(): ReactElement {
+  render() {
     return (
       <NavigationHeader
         {...this.props}
@@ -53,7 +53,7 @@ class Header extends Component {
     this.props.navigate({type: 'pop'});
   }
 
-  _renderTitleComponent(props: Object): ReactElement {
+  _renderTitleComponent(props) {
     return (
       <NavigationHeader.Title>
         {props.scene.route.key}
@@ -61,7 +61,7 @@ class Header extends Component {
     );
   }
 
-  _renderRightComponent(props: Object): ReactElement {
+  _renderRightComponent(props) {
     return (
       <NavigationHeader.Title>
         右侧

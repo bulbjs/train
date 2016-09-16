@@ -4,14 +4,19 @@
  * @flow
  */
 
-import React, { Component } from 'react';
-import Nav  from './components/nav'
-class App extends Component {
-  render() {
-    return (
-      <Nav />
-    );
-  }
+import React, {
+    Component
+} from 'react';
+
+import App from './components/app';
+
+class Index extends Component {
+    render() {
+        return (
+          <App />
+        );
+    }
 }
-module.exports = App;
+
+module.exports = Index;
 

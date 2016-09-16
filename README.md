@@ -45,3 +45,95 @@ To run your app on Android:
 $npm start
 默认端口是8081，可以指定其他端口，比如8888
 $npm start --port 8888
+
+
+# 目前支持的样式
+
+```
+
+valid style props : [
+    alignItems
+    alignSelf,
+    backfaceVisibility,
+    backgroundColor,
+    borderBottomColor,
+    borderBottomLeftRadius,
+    borderBottomRightRadius,
+    borderBottomWidth,
+    borderColor,
+    borderLeftColor,
+    borderLeftWidth,
+    borderRadius,
+    borderRightColor,
+    borderRightWidth,
+    borderStyle,
+    borderTopColor,
+    borderTopLetRadius,
+    borderTopRightRadius,
+    borderTopWidth,
+    borderWidth,
+    bottom,
+    color,
+    flex
+    flexDirection,
+    flexWrap,
+    fontFamily,
+    fontSize,
+    fontStyle,
+    fontWeigt,
+    height,
+    justifyContent,
+    left,
+    letterSpacing,
+    lineHeight,
+    margin,
+    marginBottom,
+    marginHorizontal,
+    marginLeft,
+    marginRight,
+    marginTop,
+    marginVertical,
+    opacity,
+    overflow,
+    padding,
+    paddingBottom,
+    paddingHorizontal,
+    paddingLeft,
+    paddingRight,
+    paddingTop,
+    paddingVertical,
+    position,
+    resizeMode,
+    right,
+    rotation,
+    scaleX,
+    scaleY,
+    shadowColor,
+    shadowOffset,
+    shadowOpacity,
+    shadowRadius,
+    textAlign,
+    textDecorationColor,
+    textDecorationLine,
+    textDecorationStyle,
+    tintColor,
+    top,
+    transform,
+    transformMatrix,
+    translateX,
+    translateY,
+    width,
+    writingDirection
+]
+
+```
+
+# iphone
+
+* 尺寸
+* 图标
+
+
+
+http://tool.lanrentuku.com/guifan/ui.html
+

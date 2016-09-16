@@ -78,11 +78,11 @@ function createAppNavigationState() {
 
 // Next step.
 // Define what app navigation state shall be updated.
-function updateAppNavigationState(
-  state: Object,
-  action: Object,
-): Object {
-  let {type} = action;
+function updateAppNavigationState(state, action) {
+  let {
+    type
+  } = action;
+
   if (type === 'BackAction') {
     type = 'pop';
   }
@@ -153,7 +153,7 @@ class Application extends Component {
     this._navigate = this._navigate.bind(this);
   }
 
-  render(): ReactElement {
+  render() {
     // User your own navigator (see next step).
     return (
       <Navigator
@@ -165,7 +165,7 @@ class Application extends Component {
 
   // This public method is optional. If exists, the UI explorer will call it
   // the "back button" is pressed. Normally this is the cases for Android only.
-  handleBackAction(): boolean {
+  handleBackAction() {
     return this._navigate({type: 'pop'});
   }
 
@@ -173,7 +173,7 @@ class Application extends Component {
   // to define the API that changes that navigation state. In this exmaple,
   // we'd simply use a `updateAppNavigationState` to update the navigation
   // state.
-  _navigate(action: Object): void {
+  _navigate(action) {
     if (action.type === 'exit') {
       // Exits the example. `this.props.onExampleExit` is provided
       // by the UI Explorer.
