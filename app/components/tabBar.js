@@ -46,7 +46,7 @@ class tabBar extends Component {
                     onPress={t.handleItemPress.bind(t,'bar1')}
                     title='车票预订'>
                     <View style={styles.text}>
-                        <Text style={{fontSize: 18}}>Home11</Text>
+                        <Text style={{fontSize: 18}}>Home1166</Text>
                     </View>
                 </TabBar.Item>
 
