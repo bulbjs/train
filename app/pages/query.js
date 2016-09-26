@@ -7,7 +7,6 @@ import {
     StyleSheet,
     Text,
     View,
-    TextInput,
     ScrollView,
     Dimensions,
     TouchableOpacity,
@@ -35,8 +34,8 @@ class Scenes extends Component {
         this.state = {
             show: true,
             value: '',
-            fromSite:'2',
-            toSite:'1',
+            fromSite:'杭州',
+            toSite:'上海',
             date:new Date()
         };
 
@@ -54,11 +53,6 @@ class Scenes extends Component {
                 <View style={styles.flex}>
                     <Text style = {styles.lable}>出发地</Text> 
                     <Text  style = {styles.inputs}>{t.state.fromSite}</Text> 
-                   {/* <TextInput style = {styles.inputs} 
-                    value = {t.state.fromSite}
-                    returnKeyType = "search"
-                    onChangeText = {t.handleChangeSite.bind(t,'from')}
-                    placeholder="起点车站"/>*/}
                 </View> 
                 <View style={styles.flex}>
                     <Text>icon</Text> 
@@ -66,11 +60,6 @@ class Scenes extends Component {
                 <View style={styles.flex}>
                     <Text  style = {styles.lable}>目的地</Text> 
                     <Text  style = {styles.inputs}>{t.state.toSite}</Text> 
-                   {/* <TextInput style = {styles.inputs} 
-                    value = {t.state.toSite}
-                    returnKeyType = "search"
-                    onChangeText = {t.handleChangeSite.bind(t,'to')}
-                    placeholder="终点车站"/>*/}
                 </View> 
             </View>
 

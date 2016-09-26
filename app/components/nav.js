@@ -17,24 +17,23 @@
  * FACEBOOK BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-*/
-'use strict';
+ */
 
 import React, {
-  Component,
-  PropTypes
+    Component,
+    PropTypes
 } from 'react';
 
 import {
-  NavigationExperimental
+    NavigationExperimental
 }
 from 'react-native';
 
 const {
-  CardStack: NavigationCardStack,
-  Header: NavigationHeader,
-  PropTypes: NavigationPropTypes,
-  StateUtils: NavigationStateUtils,
+    CardStack: NavigationCardStack,
+    Header: NavigationHeader,
+    PropTypes: NavigationPropTypes,
+    StateUtils: NavigationStateUtils,
 } = NavigationExperimental;
 
 import appNavigationContainer from './appNavigationContainer';
@@ -47,93 +46,107 @@ const Navigator = require('./navigator');
 // First Step.
 // Define what app navigation state will look like.
 function createAppNavigationState() {
-  return  {
-    // Three tabs.
-    tabs: {
-      index: 0,
-      routes: [
-        {key: 'apple'},
-        {key: 'banana'},
-        {key: 'orange'},
-      ],
-    },
-    // Scenes for the `apple` tab.
-    apple: {
-      index: 0,
-      routes: [{key: 'Apple Home'}],
-      rightButton:'右侧组件'
-    },
-    // Scenes for the `banana` tab.
-    banana: {
-      index: 0,
-      routes: [{key: 'Banana Home'}],
-    },
-    // Scenes for the `orange` tab.
-    orange: {
-      index: 0,
-      routes: [{key: 'Orange Home'}],
-    },
-  };
+    return {
+        // Three tabs.
+        tabs: {
+            index: 0,
+            routes: [{
+                key: 'apple'
+            }, {
+                key: 'banana'
+            }, {
+                key: 'orange'
+            }, ],
+        },
+        // Scenes for the `apple` tab.
+        apple: {
+            index: 0,
+            routes: [{
+                key: 'Apple Home'
+            }],
+            rightButton: '右侧组件'
+        },
+        // Scenes for the `banana` tab.
+        banana: {
+            index: 0,
+            routes: [{
+                key: 'Banana Home'
+            }],
+        },
+        // Scenes for the `orange` tab.
+        orange: {
+            index: 0,
+            routes: [{
+                key: 'Orange Home'
+            }],
+        },
+    };
 }
 
 // Next step.
 // Define what app navigation state shall be updated.
 function updateAppNavigationState(state, action) {
-  let {
-    type
-  } = action;
+    let {
+        type
+    } = action;
 
-  if (type === 'BackAction') {
-    type = 'pop';
-  }
-
-  switch (type) {
-    case 'push': {
-      // Push a route into the scenes stack.
-      const route: Object = action.route;
-      const {tabs} = state;
-      const tabKey = tabs.routes[tabs.index].key;
-      const scenes = state[tabKey];
-      const nextScenes = NavigationStateUtils.push(scenes, route);
-      if (scenes !== nextScenes) {
-        return {
-          ...state,
-          [tabKey]: nextScenes,
-        };
-      }
-      break;
+    if (type === 'BackAction') {
+        type = 'pop';
     }
 
-    case 'pop': {
-      // Pops a route from the scenes stack.
-      const {tabs} = state;
-      const tabKey = tabs.routes[tabs.index].key;
-      const scenes = state[tabKey];
-      const nextScenes = NavigationStateUtils.pop(scenes);
-      if (scenes !== nextScenes) {
-        return {
-          ...state,
-          [tabKey]: nextScenes,
-        };
-      }
-      break;
-    }
+    switch (type) {
+        case 'push':
+            {
+                // Push a route into the scenes stack.
+                const route: Object = action.route;
+                const {
+                    tabs
+                } = state;
+                const tabKey = tabs.routes[tabs.index].key;
+                const scenes = state[tabKey];
+                const nextScenes = NavigationStateUtils.push(scenes, route);
+                if (scenes !== nextScenes) {
+                    return {
+                        ...state,
+                        [tabKey]: nextScenes,
+                    };
+                }
+                break;
+            }
 
-    case 'selectTab': {
-      // Switches the tab.
-      const tabKey: string = action.tabKey;
-      const tabs = NavigationStateUtils.jumpTo(state.tabs, tabKey);
-      if (tabs !== state.tabs) {
-        return {
-          ...state,
-          tabs,
-        };
-      }
+        case 'pop':
+            {
+                // Pops a route from the scenes stack.
+                const {
+                    tabs
+                } = state;
+                const tabKey = tabs.routes[tabs.index].key;
+                const scenes = state[tabKey];
+                const nextScenes = NavigationStateUtils.pop(scenes);
+                if (scenes !== nextScenes) {
+                    return {
+                        ...state,
+                        [tabKey]: nextScenes,
+                    };
+                }
+                break;
+            }
+
+        case 'selectTab':
+            {
+                // Switches the tab.
+                const tabKey: string = action.tabKey;
+                const tabs = NavigationStateUtils.jumpTo(state.tabs, tabKey);
+                if (tabs !== state.tabs) {
+                    return {
+                        ...state,
+                        tabs,
+                    };
+                }
+            }
     }
-  }
-  return state;
+    return state;
 }
-
 
 
 
@@ -141,58 +154,60 @@ function updateAppNavigationState(state, action) {
 // Define a component for your application that owns the navigation state.
 class Application extends Component {
 
-  static propTypes = {
-    onExampleExit: PropTypes.func,
-  };
+    static propTypes = {
+        onExampleExit: PropTypes.func,
+    };
 
-  // This sets up the initial navigation state.
-  constructor(props, context) {
-    super(props, context);
     // This sets up the initial navigation state.
-    this.state = createAppNavigationState();
-    this._navigate = this._navigate.bind(this);
-  }
+    constructor(props, context) {
+        super(props, context);
+        // This sets up the initial navigation state.
+        this.state = createAppNavigationState();
+        this._navigate = this._navigate.bind(this);
+    }
 
-  render() {
-    // User your own navigator (see next step).
-    return (
-      <Navigator
+    render() {
+        // User your own navigator (see next step).
+        return (
+            <Navigator
         appNavigationState={this.state}
         navigate={this._navigate}
       />
-    );
-  }
-
-  // This public method is optional. If exists, the UI explorer will call it
-  // the "back button" is pressed. Normally this is the cases for Android only.
-  handleBackAction() {
-    return this._navigate({type: 'pop'});
-  }
-
-  // This handles the navigation state changes. You're free and responsible
-  // to define the API that changes that navigation state. In this exmaple,
-  // we'd simply use a `updateAppNavigationState` to update the navigation
-  // state.
-  _navigate(action) {
-    if (action.type === 'exit') {
-      // Exits the example. `this.props.onExampleExit` is provided
-      // by the UI Explorer.
-      this.props.onExampleExit && this.props.onExampleExit();
-      return;
+        );
     }
 
-    const state = updateAppNavigationState(
-      this.state,
-      action,
-    );
-
-    // `updateAppNavigationState` (which uses NavigationStateUtils) gives you
-    // back the same `state` if nothing has changed. You could use
-    // that to avoid redundant re-rendering.
-    if (this.state !== state) {
-      this.setState(state);
+    // This public method is optional. If exists, the UI explorer will call it
+    // the "back button" is pressed. Normally this is the cases for Android only.
+    handleBackAction() {
+        return this._navigate({
+            type: 'pop'
+        });
     }
-  }
+
+    // This handles the navigation state changes. You're free and responsible
+    // to define the API that changes that navigation state. In this exmaple,
+    // we'd simply use a `updateAppNavigationState` to update the navigation
+    // state.
+    _navigate(action) {
+        if (action.type === 'exit') {
+            // Exits the example. `this.props.onExampleExit` is provided
+            // by the UI Explorer.
+            this.props.onExampleExit && this.props.onExampleExit();
+            return;
+        }
+
+        const state = updateAppNavigationState(
+            this.state,
+            action,
+        );
+
+        // `updateAppNavigationState` (which uses NavigationStateUtils) gives you
+        // back the same `state` if nothing has changed. You could use
+        // that to avoid redundant re-rendering.
+        if (this.state !== state) {
+            this.setState(state);
+        }
+    }
 }
 
 module.exports = Application;
