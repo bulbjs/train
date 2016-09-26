@@ -45,47 +45,39 @@ class Scenes extends Component {
 
     render() {
         let t = this;
-        let sceneKey = t.props.scene.key;
-        
-        return (<ScrollView>
-            
-            <View style={styles.row}>
-                <View style={styles.flex}>
-                    <Text style = {styles.lable}>出发地</Text> 
-                    <Text  style = {styles.inputs}>{t.state.fromSite}</Text> 
-                </View> 
-                <View style={styles.flex}>
-                    <Text>icon</Text> 
-                </View> 
-                <View style={styles.flex}>
-                    <Text  style = {styles.lable}>目的地</Text> 
-                    <Text  style = {styles.inputs}>{t.state.toSite}</Text> 
-                </View> 
-            </View>
-
-            <TouchableOpacity
-                onPress={this.handleCalendar.bind(this)}>
+        return  (<ScrollView>
                 <View style={styles.row}>
-                    <Text>出发日期</Text>
-                    <Text>9月28日</Text>
-                    <Text>明天</Text>
-                    <Text>星期四</Text>
+                    <View style={styles.flex}>
+                        <Text style = {styles.lable}>出发地</Text> 
+                        <Text style = {styles.inputs}>{t.state.fromSite}</Text> 
+                    </View> 
+                    <View style={styles.flex}>
+                        <Text style = {styles.icon}>icon</Text> 
+                    </View> 
+                    <View style={styles.flex}>
+                        <Text  style = {styles.lable}>目的地</Text> 
+                        <Text  style = {styles.inputs}>{t.state.toSite}</Text> 
+                    </View> 
                 </View>
-            </TouchableOpacity>
 
-            
-
+                <TouchableOpacity
+                    onPress={t.handleCalendar.bind(t)}>
+                    <View style={styles.row}>
+                        <Text>出发日期</Text>
+                        <Text>9月28日</Text>
+                        <Text>明天</Text>
+                        <Text>星期四</Text>
+                    </View>
+                </TouchableOpacity>
             </ScrollView>
         );
     }
 
     handleCalendar() {
         let t = this;
-
         const route = {
             key: 'calendarPicker'
         };
-
         t.props.navigate({
             type: 'push',
             route
@@ -102,20 +94,7 @@ class Scenes extends Component {
                 toSite: value
             });
         }
-
     }
-
-    onDateChange(date) {
-        this.setState({
-            date: date
-        });
-    }
-
-  
-
-
-
-   
 
     _popRoute() {
         this.props.navigate({
@@ -139,15 +118,21 @@ const styles = StyleSheet.create({
         flex: 1
     },
     lable: {
-        height: 40,
-        lineHeight:40,
-        textAlign:'center'
+        height: 30,
+        lineHeight:30,
+        textAlign:'center',
+        color:'#1a9bf1'
+    },
+    icon:{
+        textAlign:'center',
+        lineHeight:70,
     },
     inputs: {
-        height: 40,
+        height: 30,
+        lineHeight:30,
         textAlign:'center',
-        marginLeft: 5,
-        paddingLeft: 5,
+        fontSize:20,
+        fontWeight:'bold'
     },
     date: {
         backgroundColor: '#f0f',

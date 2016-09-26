@@ -17,8 +17,8 @@ from 'react-native';
 
 import TabBar from 'react-native-xtabbar';
 import List from './list.js';
-import Query from '../pages/query';
 
+import Query from '../pages/query';
 import Calendar from '../pages/calendar';
 
 class tabBar extends Component {

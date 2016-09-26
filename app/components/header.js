@@ -1,4 +1,3 @@
-
 import React, {
     Component,
     PropTypes
@@ -30,23 +29,17 @@ class Header extends Component {
 
     constructor(props: Object, context: any) {
         super(props, context);
-        this._back = this._back.bind(this);
-        this._renderTitleComponent = this._renderTitleComponent.bind(this);
     }
-
-    componentDidMount() {
-
-    }
-
     render() {
+        let t =this;
         return (
             <NavigationHeader
-        {...this.props}
-        style={styles.header}
-        renderTitleComponent={this._renderTitleComponent}
-        renderRightComponent={this._renderRightComponent}
-        onNavigateBack={this._back}
-      />
+                {...t.props}
+                style={styles.header}
+                renderTitleComponent={t._renderTitleComponent.bind(t)}
+                renderRightComponent={t._renderRightComponent.bind(t)}
+                onNavigateBack={t._back.bind(t)}
+            />
         );
     }
 
@@ -59,17 +52,18 @@ class Header extends Component {
     _renderTitleComponent(props) {
         return (
             <NavigationHeader.Title>
-        {props.scene.route.key}
-      </NavigationHeader.Title>
+                {props.scene.route.key}
+            </NavigationHeader.Title>
         );
     }
 
     _renderRightComponent(props) {
-        return (
+        return null;
+        /*return (
             <NavigationHeader.Title>
-        右侧
-      </NavigationHeader.Title>
-        );
+            right
+            </NavigationHeader.Title>
+        );*/
     }
 }
 
