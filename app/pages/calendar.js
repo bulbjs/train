@@ -39,7 +39,8 @@ class Scenes extends Component {
         let t = this;
         let sceneKey = t.props.scene.key;
         return (<ScrollView>
-                 <CalendarPicker 
+                <CalendarPicker 
+                 textStyle={styles.container}
                 months={customMonthNames}
                 weekdays={customDayHeadings}
                 selectedDate={this.state.date}
@@ -65,7 +66,9 @@ class Scenes extends Component {
 
 
 const styles = StyleSheet.create({
-
+    container:{
+        fontSize: 18,
+    }
 });
 
 module.exports = Scenes;

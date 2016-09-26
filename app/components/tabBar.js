@@ -16,7 +16,7 @@ import {
 from 'react-native';
 
 import TabBar from 'react-native-xtabbar';
-import List from './list.js';
+//import List from './list.js';
 
 import Query from '../pages/query';
 import Calendar from '../pages/calendar';
@@ -60,7 +60,7 @@ class tabBar extends Component {
                     badge={7}
                     onPress={t.handleItemPress.bind(t,'bar2')}
                     title='我的行程'>
-                    <List />
+                    <Text style={{fontSize: 18}}>List</Text>
                 </TabBar.Item>
 
                
@@ -114,8 +114,6 @@ const styles = StyleSheet.create({
     },
     text: {
         flex: 1,
-        //alignItems: 'center',
-        //justifyContent: 'center',
     },
     item:{
     }
