@@ -32,6 +32,7 @@ const Scene = appNavigationContainer(require('./scene'));
 // Define your own tabs.
 const Tabs = appNavigationContainer(require('./tabs'));
 
+// tabBar
 const TabBar = appNavigationContainer(require('./tabBar'));
 
 class Navigator extends Component {
@@ -108,7 +109,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   navigatorCardStack: {
-    backgroundColor: '#f00',
+    backgroundColor: '#fff',
   }
 });
+
 module.exports = appNavigationContainer(Navigator);

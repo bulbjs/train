@@ -17,6 +17,9 @@ from 'react-native';
 
 import TabBar from 'react-native-xtabbar';
 import List from './list.js';
+import Query from '../pages/query';
+
+import Calendar from '../pages/calendar';
 
 class tabBar extends Component {
     constructor(props) {
@@ -35,6 +38,7 @@ class tabBar extends Component {
 
     render() {
         let t = this;
+       
         return (
             <TabBar style={styles.content}
                 navFontSize={12}
@@ -46,7 +50,7 @@ class tabBar extends Component {
                     onPress={t.handleItemPress.bind(t,'bar1')}
                     title='车票预订'>
                     <View style={styles.text}>
-                        <Text style={{fontSize: 18}}>Home1166</Text>
+                        {t._renderBar1(t.props)}
                     </View>
                 </TabBar.Item>
 
@@ -85,6 +89,21 @@ class tabBar extends Component {
             </TabBar>
 
         );
+    }
+
+    _renderBar1(props){
+        let subComponents = null;
+        let sceneKey = props.scene.key;
+        switch(sceneKey){
+            case "scene_calendarPicker":
+                subComponents = <Calendar {...props}/>
+                break;
+            default:
+                subComponents = <Query {...props}/>
+            break;
+        }
+
+        return subComponents;
     }
 }
 

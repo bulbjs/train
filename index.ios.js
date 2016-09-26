@@ -9,11 +9,11 @@ import {
   AppRegistry
 } from 'react-native';
 
-import Root from './app';
+import App from './app';
 
 class train extends Component {
   render() {
-    return <Root />;
+    return <App />;
   }
 }
 

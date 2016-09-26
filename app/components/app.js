@@ -33,9 +33,6 @@ import {
 from 'react-native';
 
 const {
-    CardStack: NavigationCardStack,
-    Header: NavigationHeader,
-    PropTypes: NavigationPropTypes,
     StateUtils: NavigationStateUtils,
 } = NavigationExperimental;
 
@@ -67,8 +64,7 @@ function createAppNavigationState() {
         bar1: {
             index: 0,
             routes: [{
-                key: '车票预订',
-                title:'车票预订',
+                key: '车票预订'
             }],
             rightButton: '右侧组件'
         },
@@ -76,23 +72,24 @@ function createAppNavigationState() {
         bar2: {
             index: 0,
             routes: [{
-                key: 'Banana Home',
-                title:'我的行程',
+                key: '我的行程',
             }],
         },
         // Scenes for the `orange` tab.
         bar3: {
             index: 0,
             routes: [{
-                key: 'Orange Home'
+                key: '旅行服务',
+
             }],
         },
         bar4: {
             index: 0,
             routes: [{
-                key: 'Orange Home'
+                key: '个人中心'
             }],
         },
+        calendar:''
     };
 }
 
@@ -135,6 +132,12 @@ function updateAppNavigationState(state, action) {
             const tabKey = tabs.routes[tabs.index].key;
             const scenes = state[tabKey];
             const nextScenes = NavigationStateUtils.pop(scenes);
+            
+            const scenesKey = scenes.routes[scenes.index].key;
+            if (scenesKey == 'calendarPicker'){
+                state.calendar = action.calendar;
+            }
+
             if (scenes !== nextScenes) {
                 return {...state,
                     [tabKey] : nextScenes,
@@ -171,7 +174,6 @@ class App extends Component {
         super(props, context);
         // This sets up the initial navigation state.
         this.state = createAppNavigationState();
-        //this._navigate = this._navigate.bind(this);
     }
 
     render() {
