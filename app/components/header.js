@@ -51,7 +51,7 @@ class Header extends Component {
 
     _renderTitleComponent(props) {
         return (
-            <NavigationHeader.Title>
+            <NavigationHeader.Title textStyle={styles.text}>
                 {props.scene.route.key}
             </NavigationHeader.Title>
         );
@@ -70,6 +70,10 @@ class Header extends Component {
 const styles = StyleSheet.create({
     header: {
         backgroundColor: '#1a9bf1',
+    },
+    text:{
+        color: '#fff',
+        //color: 'rgba(255, 255, 255, .9)',
     }
 });
 module.exports = Header;

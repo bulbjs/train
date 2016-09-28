@@ -84,9 +84,7 @@ class Navigator extends Component {
     // as type `NavigationSceneRendererProps`.
     _renderHeader(sceneProps) {
         return (
-            <Header
-        {...sceneProps}
-      />
+            <Header {...sceneProps}/>
         );
     }
 
