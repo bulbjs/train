@@ -89,7 +89,7 @@ function createAppNavigationState() {
                 key: '个人中心'
             }],
         },
-        calendar:''
+        calendar:new Date().getTime()
     };
 }
 
@@ -134,9 +134,22 @@ function updateAppNavigationState(state, action) {
             const nextScenes = NavigationStateUtils.pop(scenes);
             
             const scenesKey = scenes.routes[scenes.index].key;
-            if (scenesKey == 'calendarPicker'){
-                state.calendar = action.calendar;
+
+            switch (scenesKey) {
+                case 'calendarPicker':
+                    state.calendar = action.calendar;
+                    break;
+                case 'station':
+                    if (action.station.kind == 'from') {
+                        state.fromSite = action.station.site;
+                    } else {
+                        state.toSite = action.station.site;
+                    }
+
+                    break;
+                default:
             }
+
 
             if (scenes !== nextScenes) {
                 return {...state,

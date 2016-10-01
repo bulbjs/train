@@ -6,6 +6,7 @@ import React, {
 import {
   StyleSheet,
   Text,
+  View,
   ScrollView,
   TouchableOpacity,
   NavigationExperimental
@@ -17,7 +18,12 @@ const {
 } = NavigationExperimental
 
 
-import NavigationExampleRow from './NavigationExampleRow';
+import appNavigationContainer from './appNavigationContainer';
+
+const TabBar = appNavigationContainer(require('./tabBar'));
+import Calendar from '../pages/calendar';
+import List from '../pages/list';
+import Station from '../pages/station';
 
 
 class Scenes extends Component {
@@ -33,23 +39,33 @@ class Scenes extends Component {
     this._pushRoute = this._pushRoute.bind(this);
   }
 
-  render(): ReactElement {
-    return (
-      <ScrollView>
-        <NavigationExampleRow
-          text="Push Route"
-          onPress={this._pushRoute}
-        />
-        <NavigationExampleRow
-          text="Pop Route"
-          onPress={this._popRoute}
-        />
-        <NavigationExampleRow
-          text="Exit Header + Scenes + Tabs Example"
-          onPress={this._exit}
-        />
-      </ScrollView>
-    );
+  render() {
+    let t = this;
+    let scene = t.props.scene;
+    let sceneKey = scene.key;
+    let subComponents = null;
+    console.log(sceneKey)
+    switch (sceneKey) {
+      case "scene_calendarPicker":
+        subComponents = <Calendar {...t.props}/>
+        break;
+      case "scene_station":
+        subComponents = <Station {...t.props}/>
+        break;
+      
+      case "scene_list":
+        subComponents = <List {...t.props}/>
+        break;
+
+      default:
+        subComponents = <TabBar {...t.props}/>
+        break;
+    }
+    return <View style={styles.container}>{subComponents}</View>;
+  }
+
+  _render(){
+    
   }
 
   _pushRoute(): void {
@@ -66,6 +82,11 @@ class Scenes extends Component {
     this.props.navigate({type: 'exit'});
   }
 }
-
+const styles = StyleSheet.create({
+    container:{
+        flex:1,
+        backgroundColor: '#fff',
+    }
+});
 module.exports = Scenes;
 //export default  Scenes;

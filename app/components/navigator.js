@@ -92,12 +92,10 @@ class Navigator extends Component {
     // The detailed spec of `sceneProps` is defined at `NavigationTypeDefinition`
     // as type `NavigationSceneRendererProps`.
     _renderScene(sceneProps) {
-        return <TabBar {...sceneProps}/>
-            /*return (
-              <Scene
-                {...sceneProps}
-              />
-            );*/
+        //return <TabBar {...this.props} {...sceneProps}/>
+        return (
+            <Scene {...this.props} {...sceneProps}/>
+        );
     }
 
     _back() {

@@ -50,9 +50,19 @@ class Header extends Component {
     }
 
     _renderTitleComponent(props) {
+        
+        let routeKey = props.scene.route.key;
+        if (routeKey == 'station'){
+            if (props.scene.route.kind == 'from'){
+                routeKey = '请选择出发地'
+            }else{
+                routeKey = '请选择目的地'
+            }
+        }
+
         return (
             <NavigationHeader.Title textStyle={styles.text}>
-                {props.scene.route.key}
+                {routeKey}
             </NavigationHeader.Title>
         );
     }

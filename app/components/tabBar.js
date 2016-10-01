@@ -38,7 +38,6 @@ class tabBar extends Component {
 
     render() {
         let t = this;
-       
         return (
             <TabBar style={styles.content}
                 navFontSize={12}
