@@ -89,6 +89,8 @@ function createAppNavigationState() {
                 key: '个人中心'
             }],
         },
+        fromSite:'杭州',
+        toSite:'上海',
         calendar:new Date().getTime()
     };
 }
@@ -137,15 +139,18 @@ function updateAppNavigationState(state, action) {
 
             switch (scenesKey) {
                 case 'calendarPicker':
-                    state.calendar = action.calendar;
+                    if (action.calendar){
+                        state.calendar = action.calendar;    
+                    }
                     break;
                 case 'station':
-                    if (action.station.kind == 'from') {
-                        state.fromSite = action.station.site;
-                    } else {
-                        state.toSite = action.station.site;
+                    if (action.station) {
+                        if (action.station.kind == 'from') {
+                            state.fromSite = action.station.site;
+                        } else {
+                            state.toSite = action.station.site;
+                        }
                     }
-
                     break;
                 default:
             }
